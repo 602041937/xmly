@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="editorRecommendAlbum"
+            type="com.hpdxay.xmly.entitis.EditorRecommendAlbumEntity" />
+
+        <import type="android.net.Uri" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:visibility="@{ editorRecommendAlbum != null ? View.VISIBLE : View.INVISIBLE}">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:imageURI="@{Uri.parse(editorRecommendAlbum.coverLarge ?? ``)}"
+                app:placeholderImage="@mipmap/ic_launcher"
+                app:viewAspectRatio="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#88000000"
+                android:text="@{editorRecommendAlbum.title}"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{editorRecommendAlbum.trackTitle}"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</layout>
